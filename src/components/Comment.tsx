@@ -8,8 +8,12 @@ import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles({
   author: {
+    fontSize: "0.6rem",
+    color: "gray",
+    textAlign: "right",
+  },
+  rightblock: {
     float: "right",
-    margin: "0 5% 0 10px",
   },
 });
 
@@ -18,12 +22,19 @@ export default function Comment(props: any) {
   return (
     <Card>
       <CardContent>
+        <div className={classes.rightblock}>
+          <Typography variant="button" className={classes.author}>
+            Автор: {props.author}
+          </Typography>
+          <tr></tr>
+          <Typography variant="button" className={classes.author}>
+            {props.date}
+          </Typography>
+        </div>
+
         <Typography variant="body2"> {props.text}</Typography>
       </CardContent>
       <CardActions>
-        <Typography variant="button" className={classes.author}>
-          {props.author}
-        </Typography>
         <Button color="secondary">Удалить</Button>
         <Button color="primary">Изменить</Button>
       </CardActions>

@@ -47,9 +47,7 @@ export default function Post(props: any) {
   if (props.variant === "long") {
     resText = props.text;
     hide = classes.dn;
-  }
-  //иначе
-  else {
+  } else {
     //Если длина текста < 500 символов возвращаем текст
     if (t < 500) resText = props.text;
     //Если > обрезаем

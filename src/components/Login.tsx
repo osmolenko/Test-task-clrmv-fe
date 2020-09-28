@@ -6,29 +6,44 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
-  root: {
-    display: "flex",
-  },
   loginForm: {
     textAlign: "center",
+    width: "50vw",
+    margin: "25vh 25vw 25vh 25vw",
   },
 });
 
-export default class Login extends Component {
-  constructor(props: any) {
+export default class Login extends React.Component<
+  {},
+  { login: string; password: string; isAuth: boolean }
+> {
+  constructor(props) {
     super(props);
-    this.state = {
-      hits: [],
-    };
+    this.setState({
+      isAuth: false,
+      login: "",
+      password: "",
+    });
   }
 
+  submit = () => {
+    alert(`Login: ${this.state.login} / Password: ${this.state.password}`);
+  };
+
+  changeHandler = (event: any) => {
+    let name = event.target.name;
+    let value = event.target.value;
+    this.setState({ [name]: value });
+  };
+
   render() {
+    const classes = useStyles();
     return (
-      <Box className="LoginForm">
+      <Box className={classes.loginForm}>
         <Typography component="h2" variant="h4" align="center" paragraph>
-          Sign in
+          Blog
         </Typography>
-        <form noValidate>
+        <form>
           <TextField
             variant="outlined"
             margin="dense"
@@ -39,6 +54,7 @@ export default class Login extends Component {
             name="login"
             autoComplete="login"
             color="primary"
+            onChange={this.changeHandler}
           />
           <TextField
             variant="outlined"
@@ -50,6 +66,7 @@ export default class Login extends Component {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={this.changeHandler}
           />
           <Button type="submit" fullWidth variant="outlined" color="default">
             Sign in

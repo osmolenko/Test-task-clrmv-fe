@@ -48,7 +48,11 @@ export default function OpenPost() {
         />
         <AddComment />
         <div className={classes.cmnts}>
-          <Comment text="Darova uebok" author="osmolenko" />
+          <Comment
+            text="Darova "
+            author="osmolenko"
+            date="24.09.2020 | 12:36"
+          />
         </div>
       </div>
     </div>
